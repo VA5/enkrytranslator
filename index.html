@@ -1,0 +1,132 @@
+<!-- The purpose of this project is to build an English to Kryptonian translator, where is the Kryptonian translation is a set of images mapped to the English alphabet. -->
+<html>
+<head>
+
+	<title>EnKry Translator</title>
+	<link href='http://fonts.googleapis.com/css?family=BenchNine' rel='stylesheet' type='text/css'>
+	<style>
+
+		* {
+			padding: 0;
+			margin: 0;
+			font-family: 'BenchNine', sans-serif;
+		}
+		body {
+			margin-left: 35px;
+		}
+		#title {
+			font-size: 40px;
+			margin-top: 30px;
+			margin-bottom: 30px;
+		}
+		#description {
+			margin-top: 30px;
+			font-size: 20px;
+		}
+		span {
+			color: rgb(33,200,99);
+		}
+		#textbox {
+			width: 93%;
+			height: 30%;
+			padding: 10px;
+			font-size: 20px;
+			margin-top: 30px;
+		}
+		button {
+			margin-top: 50px;
+			margin-right: 50px;
+			width: 100px;
+			height: 30px;
+			font-weight: bold;
+			font-size: 18px;
+		}
+		#reloadButton {
+			margin-left: 50px;
+			color: rgb(180,0,0);
+		}
+		#kryptonian {
+			margin-top: 40px;
+			margin-bottom: 30px;
+			width: 93%;
+			background-color: white;
+		}
+		
+		#footer {
+		   position:fixed;
+		   left:0px;
+		   bottom:0px;
+		   height:25px;
+		   width:100%;
+		   background: white;
+		   padding-left: 10%;
+		   padding-top: 6px;
+		   font-size: 14px;
+		   background: black;
+		   color: white;
+		}
+
+	</style>
+
+	<script src="jquery-1.11.1.js"></script>
+
+</head>
+
+<body>
+
+	<div id="title">
+		En<span>Kry</span> Translator
+	</div>
+
+	<img src="enkrytranslator.jpg"/>
+	
+	<div id="description">
+		This is an English-Kryptonian translator.  Enter the desired text in English below and click "Translate" to see the Kyrptonian translation.
+	</div>
+
+	<div id="input">
+		<form>
+		<textarea id="textbox" type="textarea" placeholder="Enter English Text"></textarea>
+		<button onclick = "myFunction(); return false;">Translate</button>
+		<button id = "reloadButton" onclick = "reload(); return false;">Clear</button>
+		</form>
+	</div>
+
+	<div id="kryptonian">
+	</div>
+
+	<div id="footer">by Vahram Andreasyan</div>
+
+	<script>
+
+		// Once button is clicked, the following function will be executed
+		var myFunction = function(){
+
+				// Get inputed value of text box and lower-case it
+				var inputValue = document.getElementById("textbox").value.toLowerCase();
+
+				// Define english-kryptonian dictionary
+				var enkyDict = {"a":"a.jpg", "b":"b.jpg", "c":"c.jpg", "d":"d.jpg", "e":"e.jpg", "f":"f.jpg", "g":"g.jpg", "f":"f.jpg", "h":"h.jpg", "i":"i.jpg", "j":"j.jpg", "k":"k.jpg", "l":"l.jpg", "m":"m.jpg", "n":"n.jpg", "o":"o.jpg", "p":"p.jpg", "q":"q.jpg", "r":"r.jpg", "s":"s.jpg", "t":"t.jpg", "u":"u.jpg", "v":"v.jpg", "w":"w.jpg", "x":"x.jpg", "y":"y.jpg", "z":"z.jpg", 0:"0.jpg", 1:"1.jpg", 2:"2.jpg", 3:"3.jpg", 4:"4.jpg", 5:"5.jpg", 6:"6.jpg", 7:"7.jpg", 8:"8.jpg", 9:"9.jpg", " ":"space.jpg"}
+
+				// Display Kryptonian translation
+				for(x in inputValue){
+					if(inputValue[x] in enkyDict){
+						var v = document.createElement("img");
+						v.src = enkyDict[inputValue[x]];
+						document.getElementById("kryptonian").appendChild(v);
+					}
+				}
+			}
+			var reload = function(){
+				location.reload();
+			}
+		
+		// Other considerations
+			// if enlglish text is not found in enkyDict, display the input value as-is
+			// how about displaying kryptonian translation dynamically, as the user types?
+
+	</script>
+
+</body>
+
+</html>
